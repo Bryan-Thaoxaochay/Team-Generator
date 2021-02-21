@@ -11,5 +11,3 @@ class Manager extends Employee {
         return ('Manager');
     }
 }
-
-const manager = new Manager(Employee.)
