@@ -17,31 +17,30 @@ inquirer
             name: 'email',
             message: 'What is their email?'
         },
-        // { NEED TO FIND OUT HOW TO ASK FURTHER QUESTIONS ONCE ROLE IS CHOSEN
-        //     type: 'checkbox',
-        //     name: 'role',
-        //     message: 'What is their role?',
-        //     choices: ['Manager', 'Engineer', 'Intern'],
-        //     furtherQuestions: function() {
-        //         switch(this.role) {
-        //             case this.role === 'Manager':
-        //                 inquirer.prompt([
-        //                     {type: 'input', name: 'officeNumber', message: 'What is their office number?'}
-        //                 ])
-        //                 break;
-        //             case this.role === 'Engineer':
-        //                 inquirer.prompt([
-        //                     {type: 'input', name: 'github', message: 'What is their GitHub username?'}
-        //                 ])
-        //                 break;
-        //             case this.role === 'Intern':
-        //                 inquirer.prompt([
-        //                     {type: 'input', name: 'school', message: 'What undergraduate school did they go to?'}
-        //                 ])
-        //                 break;
-        //         } // switch
-        //     } // function
-        // }
+        {// NEED TO FIND OUT HOW TO ASK FURTHER QUESTIONS ONCE ROLE IS CHOSEN
+            type: 'list',
+            name: 'role',
+            message: 'What is their role?',
+            choices: ['Manager', 'Engineer', 'Intern'],
+        },
+        {
+            type: 'input', 
+            name: 'officeNumber', 
+            message: 'What is their office number?',
+            when: (responses) => responses.role === 'Manager'
+        },
+        {
+            type: 'input', 
+            name: 'github', 
+            message: 'What is their GitHub username?',
+            when: (responses) => responses.role === 'Engineer'
+        },
+        {
+            type: 'input', 
+            name: 'school', 
+            message: 'What undergraduate school did they go to?',
+            when: (responses) => responses.role === 'Intern'
+        }
     ]) // Inquirer
     .then((responses) => {
 
@@ -52,11 +51,6 @@ inquirer
         console.log(name);
         console.log(id);
         console.log(email);
-
-
-
-
-        // responses.furtherQuestions;
         
 
         // fs.writeFile("README.md", README, (err) =>
