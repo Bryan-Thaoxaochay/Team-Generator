@@ -1,3 +1,5 @@
+const inquirer = require('../inquirer');
+
 class Employee {
 
     constructor(name, id, email) {
@@ -7,20 +9,20 @@ class Employee {
     }
 
     getName() {
-
+        console.log(this.name);
     }
 
     getId() {
-
+        console.log(this.id);
     }
 
     getEmail() {
-
+        console.log(this.email);
     }
 
-    getRole() {
+    // getRole() {
 
-    }
+    // }
 }
 
 module.exports = Employee;

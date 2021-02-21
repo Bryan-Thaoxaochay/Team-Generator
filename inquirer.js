@@ -64,3 +64,5 @@ inquirer
         // );
 
     }) // Then
+
+    module.exports = inquirer;
