@@ -45,8 +45,17 @@ inquirer
     ]) // Inquirer
     .then((responses) => {
 
+        let name = responses.name;
+        let id = responses.id;
+        let email = responses.email;
 
-        
+        console.log(name);
+        console.log(id);
+        console.log(email);
+
+
+
+
         // responses.furtherQuestions;
         
 
