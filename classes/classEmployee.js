@@ -20,9 +20,9 @@ class Employee {
         console.log(this.email);
     }
 
-    // getRole() {
-
-    // }
+    getRole() {
+        return ('Employee');
+    }
 }
 
 module.exports = Employee;
