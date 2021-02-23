@@ -1,3 +1,4 @@
+const inquirer = require('inquirer');
 const Employee = require('./classEmployee');
 
 class Intern extends Employee {
@@ -16,3 +17,5 @@ class Intern extends Employee {
 
     }
 }
+
+const intern = new Intern(inquirer.name, inquirer.id, inquirer.email, inquirer.role, inquirer.school);

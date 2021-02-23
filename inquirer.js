@@ -6,7 +6,6 @@ inquirer
             type: 'confirm',
             name: 'addMember',
             message: 'Do you want to add a team member?',
-            // when: (responses) => responses.anotherOne === true
         },
         {
             type: 'input',
@@ -51,29 +50,50 @@ inquirer
             message: 'What undergraduate school did they go to?',
             when: (responses) => responses.role === 'Intern'
         },
-        // {
-        //     type: 'confirm',
-        //     name: 'anotherOne',
-        //     message: 'Do you want to add another team member?',
-        //     when: (responses) => responses.addMember === true
-        // }
+        {
+            type: 'confirm',
+            name: 'anotherMember',
+            message: 'Do you want to add another team member?',
+            when: (responses) => responses.addMember === true
+        }
     ]) // Inquirer
     .then((responses) => {
 
         if(!responses.addMember) {
-            console.log("No member added.")
+            console.log("No member(s) added")
         } else {
-            console.log("Member added.")
+            console.log("Member(s) added")
         }
 
-        let name = responses.name;
-        let id = responses.id;
-        let email = responses.email;
-
-        console.log(name);
-        console.log(id);
-        console.log(email);
+        // Gotta make questions repeat
         
+        if (responses.role === 'Manager') {
+
+            let role = responses.role;
+            let officeNumber = responses.officeNumber;
+            let name = responses.name;
+            let id = responses.id;
+            let email = responses.email;
+
+        } else if (responses.role === 'Engineer') {
+
+            let role = responses.role;
+            let github = responses.github;
+            let name = responses.name;
+            let id = responses.id;
+            let email = responses.email;
+
+        } else if (responses.role === 'Intern') {
+
+            let name = responses.name;
+            let id = responses.id;
+            let email = responses.email;
+            let role = responses.role;
+            let school = responses.school;
+
+        } else {
+            console.log("Type of member wasn't chosen.");
+        };        
 
         // fs.writeFile("README.md", README, (err) =>
         //     err ? console.error(err) : console.log("MD Created")
