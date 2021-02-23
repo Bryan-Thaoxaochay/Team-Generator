@@ -81,6 +81,19 @@ inquirer
             manager = new Manager(name, id, email, role, officeNumber);
             console.log(manager);
 
+            // Creating figure that will contain the info
+            let figure = $("<figure>");
+            $(".container").append(figure);
+            $(figure).attr("class", "card text-white bg-primary");
+            $(figure).attr("style", "width: 8rem;");
+            $(figure).css({"display": "inline-block", "font-size": "medium", "text-align": "center", "margin": "10px"});
+
+            // Creating header
+            let h2El = $("<h2>");
+            let h2 = $(h2El).append(name);
+            $(figure).append(h2);
+
+
 
         } else if (responses.role === 'Engineer') {
 
