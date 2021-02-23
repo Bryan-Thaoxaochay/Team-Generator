@@ -1,3 +1,5 @@
+const Inquirer = require('../app');
+
 class Employee {
 
     constructor(name, id, email) {
