@@ -1,4 +1,5 @@
 const inquirer = require('inquirer');
+const fs = require('fs');
 const Employee = require('./classEmployee');
 
 class Intern extends Employee {
@@ -9,7 +10,7 @@ class Intern extends Employee {
     }
 
     getSchool() {
-
+        console.log(this.school);
     }
 
     getRole() {

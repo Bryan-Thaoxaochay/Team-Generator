@@ -1,3 +1,7 @@
+const Manager = require('./classes/classManager.js');
+const Engineer = require('./classes/classEngineer.js');
+const Intern = require('./classes/classIntern.js');
+
 const inquirer = require('inquirer');
 
 inquirer
@@ -68,12 +72,15 @@ inquirer
         // Gotta make questions repeat
         
         if (responses.role === 'Manager') {
-
             let role = responses.role;
             let officeNumber = responses.officeNumber;
             let name = responses.name;
             let id = responses.id;
             let email = responses.email;
+
+            manager = new Manager(name, id, email, role, officeNumber);
+            console.log(manager);
+
 
         } else if (responses.role === 'Engineer') {
 
@@ -83,6 +90,9 @@ inquirer
             let id = responses.id;
             let email = responses.email;
 
+            engineer = new Engineer(name, id, email, role, github);
+            console.log(engineer);
+
         } else if (responses.role === 'Intern') {
 
             let name = responses.name;
@@ -90,6 +100,9 @@ inquirer
             let email = responses.email;
             let role = responses.role;
             let school = responses.school;
+
+            intern = new Intern(name, id, email, role, school);
+            console.log(intern);
 
         } else {
             console.log("Type of member wasn't chosen.");

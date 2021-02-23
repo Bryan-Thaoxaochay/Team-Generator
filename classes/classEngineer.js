@@ -1,4 +1,5 @@
 const inquirer = require('inquirer');
+const fs = require('fs');
 const Employee = require('./classEmployee');
 
 class Engineer extends Employee {
@@ -9,7 +10,7 @@ class Engineer extends Employee {
     }
 
     getGithub() {
-
+        console.log(this.github);
     }
 
     getRole() {
@@ -17,4 +18,3 @@ class Engineer extends Employee {
     }
 }
 
-const engineer = new Engineer(inquirer.name, inquirer.id, inquirer.email, inquirer.role, inquirer.github);
