@@ -1,40 +1,49 @@
-const inquirerPrompts = require('../app');
 const Employee = require('../classes/classEmployee');
 
 describe("getName", () => {
 
-    it("should console log the name of the member", () => {
-        let nameInquirer = inquirerPrompts.prompts().response.name;
-        let nameEmployee = new Employee().getName();
+    it("should console log the name", () => {
+        
+        const name = "Bryan"
+        const employee = new Employee(name);
 
-        expect(nameInquirer).toBe(nameEmployee);
+        expect(employee.getName()).toBe(name);
     })
 
 });
 
-// describe("getId", () => {
+describe("getId", () => {
 
-//     it("should", () => {
+    it("should console log the ID", () => {
 
-//         expect().();
-//     })
+        const id = "1"
+        const employee = new Employee("", id);
 
-// });
+        expect(employee.getId()).toBe(id);
+    })
 
-// describe("getEmail", () => {
+});
 
-//     it("should", () => {
+describe("getEmail", () => {
 
-//         expect().();
-//     })
+    it("should console log the email", () => {
 
-// });
+        const email = "email@email.com"
+        const employee = new Employee("", "", email);
 
-// describe("getRole", () => {
+        expect(employee.getEmail()).toBe(email);
+    })
 
-//     it("should", () => {
+});
 
-//         expect().();
-//     })
+describe("getRole", () => {
 
-// });
+    it("should console log the role", () => {
+
+        const role = "Employee"
+        const employee = new Employee("", "", "")
+
+        expect(employee.getRole()).toBe(role);
+    })
+
+});

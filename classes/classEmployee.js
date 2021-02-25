@@ -1,5 +1,3 @@
-const inquirerPrompts = require('../app');
-
 class Employee {
 
     constructor(name, id, email) {
@@ -9,15 +7,15 @@ class Employee {
     }
 
     getName() {
-        console.log(this.name);
+        return this.name;
     }
 
     getId() {
-        console.log(this.id);
+        return this.id;
     }
 
     getEmail() {
-        console.log(this.email);
+        return this.email;
     }
 
     getRole() {
