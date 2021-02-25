@@ -76,7 +76,6 @@ let inquirerPrompts = function prompts() {
                 console.log("Member(s) added")
             }
 
-            // let employeeArray = [{}];
 
             // Trying to define variables in objects, then to push into the HTML            
             if (responses.role === 'Manager') {
@@ -95,8 +94,6 @@ let inquirerPrompts = function prompts() {
 
                 manager = new Manager(name, id, email, role, officeNumber);
                 console.log(employeeArray);
-
-
 
             } else if (responses.role === 'Engineer') {
 
@@ -136,6 +133,7 @@ let inquirerPrompts = function prompts() {
                 console.log("Type of member wasn't chosen.");
             };        
 
+
             // Getting questions to loop back around if user wants to add another member.
             if(responses.anotherMember){
                 prompts();
@@ -144,51 +142,116 @@ let inquirerPrompts = function prompts() {
             }
 
 
+        }) // First then
+        
+        .then(() => {
             // Read html file I want info to go to
             const mainPath = './templates/main.html';
 
             fs.readFile(mainPath, 'utf8', function (error, data) {
+
                 if (error){
                     console.error(error);
                 } else {
                     console.log("File read");
                 }
 
-                // Replacing content of main.html
-                let replacedResult = data.replace("{{{employees}}}", "./templates/manager.html");
+                // Generate a string from employeeArray
+                for (let i = 0; i < employeeArray.length; i++) {
 
-                fs.writeFile(mainPath, replacedResult, 'utf8', (error, data) =>
-                error ? console.error(error) : console.log("File written")
-                )
-            }
-            
-            );
+                    if (employeeArray[i].role === 'Manager') {
 
-            // Generate a string from employeeArray
-            for (let i = 0; i < employeeArray.length; i++) {
-                let strName = String(employeeArray[i].name);
-                let strRole = String(employeeArray[i].role);
-                let strID = String(employeeArray[i].id);
-                let strEmail = String(employeeArray[i].email);
-                // let strOfficeNumber = String(employeeArray[i].officeNumber);
+                        let strName = String(employeeArray[i].name);
+                        let strRole = String(employeeArray[i].role);
+                        let strID = String(employeeArray[i].id);
+                        let strEmail = String(employeeArray[i].email);
+                        let strOfficeNumber = String(employeeArray[i].officeNumber);
 
-                console.log(strName);
-                console.log(strRole);
-                console.log(strID);
-                console.log(strEmail);
-            } // For Loop
+                        // Writing to html template
+                        fs.readFile('./templates/manager.html', 'utf8', function (error, data) {
 
-        }) // Then
+                            if (error) {
+                                console.error(error);
+                            } else {
+                                console.log("Manager file read");
+                            }
+                            
+                            let managerResult = data.replace("{{{name}}}", strName).replace("{{{role}}}", strRole).replace("{{{id}}}", strID).replace("{{{email}}}", strEmail).replace("{{{office-number}}}", strOfficeNumber);
+
+                            fs.writeFile('./templates/manager.html', managerResult, 'utf8', (error, data) =>
+                            error ? console.error(error) : console.log("Manager file written")
+                            )
+                        }) // Manager readFile
+
+                        // // Replacing content of main.html
+                        // let replacedResult = data.replace("{{{employees}}}", "Manager"); 
+                        // // NEED TO REPLACE WITH ONCE WITH ALL TEMPLATES
+
+                        // // Write back to the main.html file
+                        // fs.writeFile(mainPath, replacedResult, 'utf8', (error, data) =>
+                        // error ? console.error(error) : console.log("Manager file written")
+                        // )
+
+
+                    } else if (employeeArray[i].role === 'Engineer') {
+
+                        let strName = String(employeeArray[i].name);
+                        let strRole = String(employeeArray[i].role);
+                        let strID = String(employeeArray[i].id);
+                        let strEmail = String(employeeArray[i].email);
+                        let strGithub = String(employeeArray[i].github);
+
+                        // Writing to html template
+                        fs.readFile('./templates/engineer.html', 'utf8', function (error, data) {
+
+                            if (error) {
+                                console.error(error);
+                            } else {
+                                console.log("Engineer file read");
+                            }
+                            
+                            let engineerResult = data.replace("{{{name}}}", strName).replace("{{{role}}}", strRole).replace("{{{id}}}", strID).replace("{{{email}}}", strEmail).replace("{{{github}}}", strGithub);
+
+                            fs.writeFile('./templates/engineer.html', engineerResult, 'utf8', (error, data) =>
+                            error ? console.error(error) : console.log("Engineer file written")
+                            )
+                        }) // Engineer readFile
+
+                    } else if (employeeArray[i].role === 'Intern'){
+
+                        let strName = String(employeeArray[i].name);
+                        let strRole = String(employeeArray[i].role);
+                        let strID = String(employeeArray[i].id);
+                        let strEmail = String(employeeArray[i].email);
+                        let strSchool = String(employeeArray[i].school);
+
+                        // Writing to html template
+                        fs.readFile('./templates/intern.html', 'utf8', function (error, data) {
+
+                            if (error) {
+                                console.error(error);
+                            } else {
+                                console.log("Intern file read");
+                            }
+                            
+                            let internResult = data.replace("{{{name}}}", strName).replace("{{{role}}}", strRole).replace("{{{id}}}", strID).replace("{{{email}}}", strEmail).replace("{{{school}}}", strSchool);
+
+                            fs.writeFile('./templates/intern.html', internResult, 'utf8', (error, data) =>
+                            error ? console.error(error) : console.log("Intern file written")
+                            )
+                        }) // Intern readFile
+
+                    } // If/Else
+                } // For Loop
+
+            }); // readFile
+        }) // Second then
 } // Function
 
 // Calling the function
 inquirerPrompts();
 
 let employeeArray = [];
-
-// Replace {{{employees}}} with generated string : replace()
-
-// Write back the main.html file
 
 // Exporting the function
 module.exports = inquirerPrompts;
