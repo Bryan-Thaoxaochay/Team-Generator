@@ -74,6 +74,8 @@ let inquirerPrompts = function prompts() {
                 console.log("Member(s) added")
             }
 
+            // let employeeArray = [{}];
+
             // Trying to define variables in objects, then to push into the HTML            
             if (responses.role === 'Manager') {
 
@@ -83,8 +85,16 @@ let inquirerPrompts = function prompts() {
                 let id = responses.id;
                 let email = responses.email;
 
+                let managerObject = {
+                    name: name, role: role, id: id, email: email, officeNumber: officeNumber
+                };
+
+                employeeArray.push(managerObject);
+
                 manager = new Manager(name, id, email, role, officeNumber);
-                console.log(manager);
+                console.log(employeeArray);
+
+
 
             } else if (responses.role === 'Engineer') {
 
@@ -94,8 +104,14 @@ let inquirerPrompts = function prompts() {
                 let id = responses.id;
                 let email = responses.email;
 
+                let engineerObject = {
+                    name: name, role: role, id: id, email: email, github: github
+                };
+
+                employeeArray.push(engineerObject);
+
                 engineer = new Engineer(name, id, email, role, github);
-                console.log(engineer);
+                console.log(employeeArray);
 
             } else if (responses.role === 'Intern') {
 
@@ -105,8 +121,14 @@ let inquirerPrompts = function prompts() {
                 let role = responses.role;
                 let school = responses.school;
 
+                let internObject = {
+                    name: name, role: role, id: id, email: email, school: school
+                };
+
+                employeeArray.push(internObject);
+
                 intern = new Intern(name, id, email, role, school);
-                console.log(intern);
+                console.log(employeeArray);
 
             } else {
                 console.log("Type of member wasn't chosen.");
@@ -121,6 +143,8 @@ let inquirerPrompts = function prompts() {
 
         }) // Then
 } // Function
+
+let employeeArray = [];
 
 // Calling the function
 inquirerPrompts();
