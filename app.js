@@ -87,21 +87,6 @@ let inquirerPrompts = function prompts() {
                 manager = new Manager(name, id, email, role, officeNumber);
                 console.log(manager);
 
-                // // Creating figure that will contain the info
-                // let figure = document.createElement("figure");
-                // const container = document.getElementsByClassName("container");
-                // container.appendChild(figure);
-                // figure.classList.add("card text-white bg-primary");
-                // figure.style.width = "8rem";
-                // figure.style.cssText = "display: inline-block; font-size: medium; text-align: center; margin: 10px";
-
-                // // Creating header
-                // let h2El = document.createElement("h2");
-                // let h2 = h2El.appendChild(name);
-                // figure.appendChild(h2);
-
-                // // Unable to manipulate DOM in node.js because this isn't a browser
-
             } else if (responses.role === 'Engineer') {
 
                 let role = responses.role;
@@ -140,8 +125,24 @@ let inquirerPrompts = function prompts() {
 
 // Calling the function
 async function start() {
+    inquirerPrompts();
+    // Creating figure that will contain the info
+    let figure = document.createElement("figure");
+    const container = document.getElementsByClassName("container");
+    container.appendChild(figure);
+    figure.classList.add("card text-white bg-primary");
+    figure.style.width = "8rem";
+    figure.style.cssText = "display: inline-block; font-size: medium; text-align: center; margin: 10px";
+
+    // Creating header
+    let h2El = document.createElement("h2");
+    let h2 = h2El.appendChild(name);
+    figure.appendChild(h2);
+
+    // Unable to manipulate DOM in node.js because this isn't a browser
+
     await expressFunction();
-    await inquirerPrompts();
+
 }
 
 start();
