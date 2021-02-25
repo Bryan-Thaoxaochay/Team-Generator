@@ -1,4 +1,4 @@
-const Inquirer = require('../app');
+const inquirerPrompts = require('../app');
 
 class Employee {
 

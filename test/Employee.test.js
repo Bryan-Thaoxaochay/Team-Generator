@@ -1,9 +1,10 @@
+const inquirerPrompts = require('../app');
 const Employee = require('../classes/classEmployee');
 
 describe("getName", () => {
 
     it("should console log the name of the member", () => {
-        let nameInquirer = Inquirer.response.name;
+        let nameInquirer = inquirerPrompts.prompts().response.name;
         let nameEmployee = new Employee().getName();
 
         expect(nameInquirer).toBe(nameEmployee);

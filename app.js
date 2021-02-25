@@ -1,10 +1,13 @@
+// Local Files
 const Manager = require('./classes/classManager.js');
 const Engineer = require('./classes/classEngineer.js');
 const Intern = require('./classes/classIntern.js');
+const expressFunction = require('./server');
 
+// Modules
 const inquirer = require('inquirer');
 
-function inquirerPrompts() {
+let inquirerPrompts = function prompts() {
     inquirer
         .prompt([
             {
@@ -72,7 +75,7 @@ function inquirerPrompts() {
                 console.log("Member(s) added")
             }
 
-            // Trying to define variables to objects, then to push into the HTML            
+            // Trying to define variables in objects, then to push into the HTML            
             if (responses.role === 'Manager') {
 
                 let role = responses.role;
@@ -127,7 +130,7 @@ function inquirerPrompts() {
 
             // Getting questions to loop back around if user wants to add another member.
             if(responses.anotherMember){
-                inquirerPrompts();
+                prompts();
             } else{
                 console.log("No more members are being added.")
             }
@@ -136,7 +139,13 @@ function inquirerPrompts() {
 } // Function
 
 // Calling the function
-inquirerPrompts();
+async function start() {
+    await expressFunction();
+    await inquirerPrompts();
+}
+
+start();
+
 
 // Exporting the function
-module.exports = inquirerPrompts();
+module.exports = inquirerPrompts;
