@@ -5,6 +5,8 @@ const Intern = require('./classes/classIntern.js');
 
 // Modules
 const inquirer = require('inquirer');
+const fs = require('fs');
+const { data } = require('jquery');
 
 let inquirerPrompts = function prompts() {
     inquirer
@@ -141,13 +143,52 @@ let inquirerPrompts = function prompts() {
                 console.log("No more members are being added.")
             }
 
+
+            // Read html file I want info to go to
+            const mainPath = './templates/main.html';
+
+            fs.readFile(mainPath, 'utf8', function (error, data) {
+                if (error){
+                    console.error(error);
+                } else {
+                    console.log("File read");
+                }
+
+                // Replacing content of main.html
+                let replacedResult = data.replace("{{{employees}}}", "./templates/manager.html");
+
+                fs.writeFile(mainPath, replacedResult, 'utf8', (error, data) =>
+                error ? console.error(error) : console.log("File written")
+                )
+            }
+            
+            );
+
+            // Generate a string from employeeArray
+            for (let i = 0; i < employeeArray.length; i++) {
+                let strName = String(employeeArray[i].name);
+                let strRole = String(employeeArray[i].role);
+                let strID = String(employeeArray[i].id);
+                let strEmail = String(employeeArray[i].email);
+                // let strOfficeNumber = String(employeeArray[i].officeNumber);
+
+                console.log(strName);
+                console.log(strRole);
+                console.log(strID);
+                console.log(strEmail);
+            } // For Loop
+
         }) // Then
 } // Function
 
-let employeeArray = [];
-
 // Calling the function
 inquirerPrompts();
+
+let employeeArray = [];
+
+// Replace {{{employees}}} with generated string : replace()
+
+// Write back the main.html file
 
 // Exporting the function
 module.exports = inquirerPrompts;
