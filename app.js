@@ -6,7 +6,6 @@ const Intern = require('./classes/classIntern.js');
 // Modules
 const inquirer = require('inquirer');
 const fs = require('fs');
-const jquery = require('jquery');
 
 let inquirerPrompts = function prompts() {
     inquirer
