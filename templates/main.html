@@ -20,10 +20,43 @@
 
 <br>
 
-    <!-- Main -->
-    <main class="card" style="width: 18rem;">
+    <main class="container">
+        <div class="row">
+            <div class="col-md-4 card" style="width: 18rem;">
+                            <!-- Manager -->
+                <div class="card-body">
+                    <h2 class='card-title'>{{{manager-name}}}</h2>
+                    <h3 class='card-subtitle'>{{{manager-role}}}</h3>
+                    <p class='card-text'>{{{manager-id}}}</p>
+                    <p class='card-text'>{{{manager-email}}}</p>
+                    <p class='card-text'>{{{office-number}}}</p>
+                </div>
+            </div>
 
-        {{{employees}}}
+
+            <div class="col-md-4 card" style="width: 18rem;">
+                            <!-- Engineer -->
+                <div class="card-body">
+                    <h2 class='card-title'>{{{engineer-name}}}</h2>
+                    <h3 class='card-subtitle'>{{{engineer-role}}}</h3>
+                    <p class='card-text'>{{{engineer-id}}}</p>
+                    <p class='card-text'>{{{engineer-email}}}</p>
+                    <p class='card-text'>{{{github}}}</p>
+                </div>
+            </div>
+
+            <div class="col-md-4 card" style="width: 18rem;">
+            <!-- Intern -->
+                <div class="card-body">
+                    <h2 class='card-title'>{{{intern-name}}}</h2>
+                    <h3 class='card-subtitle'>{{{intern-role}}}</h3>
+                    <p class='card-text'>{{{intern-id}}}</p>
+                    <p class='card-text'>{{{intern-email}}}</p>
+                    <p class='card-text'>{{{school}}}</p>
+                </div>
+            </div>
+
+        </div>
 
     </main>
 

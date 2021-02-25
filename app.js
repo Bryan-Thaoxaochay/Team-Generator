@@ -6,7 +6,7 @@ const Intern = require('./classes/classIntern.js');
 // Modules
 const inquirer = require('inquirer');
 const fs = require('fs');
-const { data } = require('jquery');
+const jquery = require('jquery');
 
 let inquirerPrompts = function prompts() {
     inquirer
@@ -145,10 +145,9 @@ let inquirerPrompts = function prompts() {
         }) // First then
         
         .then(() => {
-            // Read html file I want info to go to
-            const mainPath = './templates/main.html';
 
-            fs.readFile(mainPath, 'utf8', function (error, data) {
+            // Read html file I want info to go to
+            fs.readFile('./templates/main.html', 'utf8', function (error, data) {
 
                 if (error){
                     console.error(error);
@@ -168,7 +167,7 @@ let inquirerPrompts = function prompts() {
                         let strOfficeNumber = String(employeeArray[i].officeNumber);
 
                         // Writing to html template
-                        fs.readFile('./templates/manager.html', 'utf8', function (error, data) {
+                        fs.readFile('./templates/main.html', 'utf8', function (error, data) {
 
                             if (error) {
                                 console.error(error);
@@ -176,22 +175,12 @@ let inquirerPrompts = function prompts() {
                                 console.log("Manager file read");
                             }
                             
-                            let managerResult = data.replace("{{{name}}}", strName).replace("{{{role}}}", strRole).replace("{{{id}}}", strID).replace("{{{email}}}", strEmail).replace("{{{office-number}}}", strOfficeNumber);
+                            let managerResult = data.replace("{{{manager-name}}}", strName).replace("{{{manager-role}}}", strRole).replace("{{{manager-id}}}", strID).replace("{{{manager-email}}}", strEmail).replace("{{{office-number}}}", strOfficeNumber);
 
-                            fs.writeFile('./templates/manager.html', managerResult, 'utf8', (error, data) =>
-                            error ? console.error(error) : console.log("Manager file written")
+                            fs.writeFile('./templates/main.html', managerResult, 'utf8', (error, data) =>
+                            error ? console.error(error) : console.log("Manager added")
                             )
                         }) // Manager readFile
-
-                        // // Replacing content of main.html
-                        // let replacedResult = data.replace("{{{employees}}}", "Manager"); 
-                        // // NEED TO REPLACE WITH ONCE WITH ALL TEMPLATES
-
-                        // // Write back to the main.html file
-                        // fs.writeFile(mainPath, replacedResult, 'utf8', (error, data) =>
-                        // error ? console.error(error) : console.log("Manager file written")
-                        // )
-
 
                     } else if (employeeArray[i].role === 'Engineer') {
 
@@ -202,7 +191,7 @@ let inquirerPrompts = function prompts() {
                         let strGithub = String(employeeArray[i].github);
 
                         // Writing to html template
-                        fs.readFile('./templates/engineer.html', 'utf8', function (error, data) {
+                        fs.readFile('./templates/main.html', 'utf8', function (error, data) {
 
                             if (error) {
                                 console.error(error);
@@ -210,10 +199,10 @@ let inquirerPrompts = function prompts() {
                                 console.log("Engineer file read");
                             }
                             
-                            let engineerResult = data.replace("{{{name}}}", strName).replace("{{{role}}}", strRole).replace("{{{id}}}", strID).replace("{{{email}}}", strEmail).replace("{{{github}}}", strGithub);
+                            let engineerResult = data.replace("{{{engineer-name}}}", strName).replace("{{{engineer-role}}}", strRole).replace("{{{engineer-id}}}", strID).replace("{{{engineer-email}}}", strEmail).replace("{{{github}}}", strGithub);
 
-                            fs.writeFile('./templates/engineer.html', engineerResult, 'utf8', (error, data) =>
-                            error ? console.error(error) : console.log("Engineer file written")
+                            fs.writeFile('./templates/main.html', engineerResult, 'utf8', (error, data) =>
+                            error ? console.error(error) : console.log("Engineer added")
                             )
                         }) // Engineer readFile
 
@@ -226,7 +215,7 @@ let inquirerPrompts = function prompts() {
                         let strSchool = String(employeeArray[i].school);
 
                         // Writing to html template
-                        fs.readFile('./templates/intern.html', 'utf8', function (error, data) {
+                        fs.readFile('./templates/main.html', 'utf8', function (error, data) {
 
                             if (error) {
                                 console.error(error);
@@ -234,17 +223,17 @@ let inquirerPrompts = function prompts() {
                                 console.log("Intern file read");
                             }
                             
-                            let internResult = data.replace("{{{name}}}", strName).replace("{{{role}}}", strRole).replace("{{{id}}}", strID).replace("{{{email}}}", strEmail).replace("{{{school}}}", strSchool);
+                            let internResult = data.replace("{{{intern-name}}}", strName).replace("{{{intern-role}}}", strRole).replace("{{{intern-id}}}", strID).replace("{{{intern-email}}}", strEmail).replace("{{{school}}}", strSchool);
 
-                            fs.writeFile('./templates/intern.html', internResult, 'utf8', (error, data) =>
-                            error ? console.error(error) : console.log("Intern file written")
+                            fs.writeFile('./templates/main.html', internResult, 'utf8', (error, data) =>
+                            error ? console.error(error) : console.log("Intern added")
                             )
                         }) // Intern readFile
 
                     } // If/Else
                 } // For Loop
 
-            }); // readFile
+            }); // readFile 
         }) // Second then
 } // Function
 
