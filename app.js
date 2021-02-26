@@ -92,7 +92,6 @@ let inquirerPrompts = function prompts() {
                 employeeArray.push(managerObject);
 
                 manager = new Manager(name, id, email, role, officeNumber);
-                console.log(employeeArray);
 
             } else if (responses.role === 'Engineer') {
 
@@ -109,7 +108,6 @@ let inquirerPrompts = function prompts() {
                 employeeArray.push(engineerObject);
 
                 engineer = new Engineer(name, id, email, role, github);
-                console.log(employeeArray);
 
             } else if (responses.role === 'Intern') {
 
@@ -126,12 +124,8 @@ let inquirerPrompts = function prompts() {
                 employeeArray.push(internObject);
 
                 intern = new Intern(name, id, email, role, school);
-                console.log(employeeArray);
 
-            } else {
-                console.log("Type of member wasn't chosen.");
-            };        
-
+            }  
 
             // Getting questions to loop back around if user wants to add another member.
             if(responses.anotherMember){
@@ -150,8 +144,6 @@ let inquirerPrompts = function prompts() {
 
                 if (error){
                     console.error(error);
-                } else {
-                    console.log("File read");
                 }
 
                 // Generate a string from employeeArray
@@ -170,16 +162,16 @@ let inquirerPrompts = function prompts() {
 
                             if (error) {
                                 console.error(error);
-                            } else {
-                                console.log("Manager file read");
                             }
                             
                             let managerResult = data.replace("{{{manager-name}}}", strName).replace("{{{manager-role}}}", strRole).replace("{{{manager-id}}}", strID).replace("{{{manager-email}}}", strEmail).replace("{{{office-number}}}", strOfficeNumber);
 
-                            fs.writeFile('./templates/main.html', managerResult, 'utf8', (error, data) =>
-                            error ? console.error(error) : console.log("Manager added")
-                            )
-                        }) // Manager readFile
+                            fs.writeFile('./templates/main.html', managerResult, 'utf8', function (error, data) {
+                                if (error) {
+                                    console.error(error);
+                                }
+                            });
+                        }); // Manager readFile
 
                     } else if (employeeArray[i].role === 'Engineer') {
 
@@ -194,16 +186,16 @@ let inquirerPrompts = function prompts() {
 
                             if (error) {
                                 console.error(error);
-                            } else {
-                                console.log("Engineer file read");
                             }
-                            
+
                             let engineerResult = data.replace("{{{engineer-name}}}", strName).replace("{{{engineer-role}}}", strRole).replace("{{{engineer-id}}}", strID).replace("{{{engineer-email}}}", strEmail).replace("{{{github}}}", strGithub);
 
-                            fs.writeFile('./templates/main.html', engineerResult, 'utf8', (error, data) =>
-                            error ? console.error(error) : console.log("Engineer added")
-                            )
-                        }) // Engineer readFile
+                            fs.writeFile('./templates/main.html', engineerResult, 'utf8', function (error, data) {
+                                if (error) {
+                                    console.error(error);
+                                }
+                            });
+                        }); // Engineer readFile
 
                     } else if (employeeArray[i].role === 'Intern'){
 
@@ -218,16 +210,16 @@ let inquirerPrompts = function prompts() {
 
                             if (error) {
                                 console.error(error);
-                            } else {
-                                console.log("Intern file read");
                             }
                             
                             let internResult = data.replace("{{{intern-name}}}", strName).replace("{{{intern-role}}}", strRole).replace("{{{intern-id}}}", strID).replace("{{{intern-email}}}", strEmail).replace("{{{school}}}", strSchool);
 
-                            fs.writeFile('./templates/main.html', internResult, 'utf8', (error, data) =>
-                            error ? console.error(error) : console.log("Intern added")
-                            )
-                        }) // Intern readFile
+                            fs.writeFile('./templates/main.html', internResult, 'utf8', function (error, data) {
+                                if (error) {
+                                    console.error(error);
+                                }
+                            });
+                        }); // Intern readFile
 
                     } // If/Else
                 } // For Loop

@@ -10,12 +10,16 @@ HTML5, CSS3, Bootstrap3, JavaScript, Node.js, inquirer module, fs module
 
 ## Screenshots
 
-![](images/)
+![](images/Screenshot.png)
 
 ## Links
 
 ### Github Repo
 https://github.com/Bryan-Thaoxaochay/Team-Generator
+
+### Video
+
+https://drive.google.com/file/d/1Ew4AKf561j4AA9ay1zpt7rJPa9RWwlPE/view 
 
 ## What I Learned
 
@@ -45,6 +49,8 @@ https://github.com/Bryan-Thaoxaochay/Team-Generator
     Got some practice creating classes, constructors, using extend, and exporting and importing them to each other.
 
 7. Tests
+
+    Got some practice using tests on the classes and constructors. It was tricky at first, but I realized I was using test incorrectly. 
 
 
 ## Contact Information
